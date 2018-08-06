@@ -1,7 +1,11 @@
 <template>
   <div class="banner">
       <img src="../../static/images/logo.jpg">
-      <div class="line"></div>
+      <div class="line">
+        <div class="user-info" v-if="false">
+          欢迎来到游戏世界 <span class="name">{{username}}</span> <span class="signout">【退出】</span>
+        </div>
+      </div>
   </div>
 </template>
 
@@ -10,7 +14,7 @@ export default {
   name: "HelloWorld",
   data() {
     return {
-      msg: "Welcome to Your Vue.js App"
+      username: "Lifei"
     };
   }
 };
@@ -20,16 +24,26 @@ export default {
 <style lang="scss" scoped="" type="text/css">
 .banner {
   width: 100%;
-  img{
+  img {
     min-width: 300px;
     max-width: 400px;
     display: block;
     margin: 0 auto;
   }
-  .line{
+  .line {
     width: 100%;
-    height: 30px;
-    background: #1F1934
+    height: 40px;
+    background: #007acc;
+  }
+  .user-info {
+    height: 100%;
+    line-height: 40px;
+    text-align: right;
+    margin-right: 10%;
+    color: black;
+    .name {
+      color: #ffffff;
+    }
   }
 }
 </style>

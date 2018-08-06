@@ -32,7 +32,10 @@ export default {
     gotoLogin() {
       loginFunc(this.formLabelAlign.username, this.formLabelAlign.password)
         .then(Response => {
-          console.log(Response);
+          let cookieInfo = {};
+          cookieInfo.name = Response.data.name;
+          cookieInfo.token = Response.data.token;
+          this.$cookie.set("userInfo", cookieInfo);
         })
         .catch(error => {
           console.log(error);

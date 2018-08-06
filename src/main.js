@@ -6,10 +6,13 @@ import router from './router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import axios from "axios";
+import cookie from "js-cookie";
+import './router/router_valid';
 
 
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios;
+Vue.prototype.$cookie = cookie;
 Vue.use(ElementUI);
 /* eslint-disable no-new */
 new Vue({
