@@ -36,6 +36,7 @@ export default {
           cookieInfo.name = Response.data.name;
           cookieInfo.token = Response.data.token;
           this.$cookie.set("userInfo", cookieInfo);
+          this.$router.push({path:'/'})
         })
         .catch(error => {
           console.log(error);

@@ -1,21 +1,30 @@
 <template>
   <div class="home">
-    {{ msg }}
+        <v-silder/>
+        <router-view/>
   </div>
 </template>
 
 <script>
+import silder from "@/components/silder";
 export default {
-  name: 'home',
-  data () {
+  name: "home",
+  data() {
     return {
-      msg: '主页'
-    }
+    };
+  },
+  components: {
+    "v-silder": silder
+  },
+  mounted: function() {
+    
   }
-}
+};
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+.home {
+  width: 100%;
+  height: 600px;
+}
 </style>
