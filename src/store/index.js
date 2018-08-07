@@ -6,7 +6,8 @@ Vue.use(vuex)
 
 let store = new vuex.Store({//store对象
   state: {
-    showtop: ""
+    showtop: "",
+    baseurl: "http://localhost:3000/"
   },
   getters: {
     not_show(state) {//这里的state对应着上面这个state
@@ -17,13 +18,13 @@ let store = new vuex.Store({//store对象
     isShow(state) {
       if (cookie.get('userInfo')) {
         state.showtop = true
-      }else{
+      } else {
         state.showtop = false
       }
     }
   },
-  actions:{
-    is_show({commit}){
+  actions: {
+    is_show({ commit }) {
       commit('isShow')
     }
   }
