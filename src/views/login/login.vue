@@ -18,6 +18,7 @@
 
 <script>
 import { loginFunc } from "@/api/user";
+import { Message } from 'element-ui';
 export default {
   name: "login",
   data() {
@@ -32,11 +33,16 @@ export default {
     gotoLogin() {
       loginFunc(this.formLabelAlign.username, this.formLabelAlign.password)
         .then(Response => {
-          let cookieInfo = {};
-          cookieInfo.name = Response.data.name;
-          cookieInfo.token = Response.data.token;
-          this.$cookie.set("userInfo", cookieInfo);
-          this.$router.push({path:'/'})
+          console.log();
+          if (Response.data.state === 2) {
+            let cookieInfo = {};
+            cookieInfo.name = Response.data.name;
+            cookieInfo.token = Response.data.token;
+            this.$cookie.set("userInfo", cookieInfo);
+            this.$router.push({ path: "/" });
+          }else{
+            Message.error(Response.data.message)
+          }
         })
         .catch(error => {
           console.log(error);
