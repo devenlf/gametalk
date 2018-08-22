@@ -2,25 +2,24 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import login from '@/views/login/login'
 import home from '@/views/home/home'
-import List from '@/views/list/list'
+import childRouter from './children-list'
+
+
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
       //重定向
-      redirect: '/home/list'
+      redirect: '/home'
     },
     {
       path: '/home',
-      redirect: '/home/list',
-      name: 'home',
+      redirect: '/home/games',
       component: home,
-      children:[
-        {path:'list',component:List}
-      ]
+      children: childRouter
     },
     {
       path: '/login',
@@ -29,3 +28,6 @@ export default new Router({
     }
   ]
 })
+
+export default router
+

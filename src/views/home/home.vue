@@ -7,6 +7,7 @@
 
 <script>
 import silder from "@/components/silder";
+// import router from "@/router";
 export default {
   name: "home",
   data() {
@@ -16,9 +17,10 @@ export default {
   components: {
     "v-silder": silder
   },
-  mounted: function() {
-    
-  }
+  created: function() {
+    console.log(this.listData);
+  },
+  mounted: function() {}
 };
 </script>
 
