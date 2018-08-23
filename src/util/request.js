@@ -3,7 +3,7 @@
  */
 // 引入axios以及element ui中的loading和message组件
 import axios from 'axios'
-
+import Cookies from "js-cookie";
 // 创建axios实例
 const service = axios.create({
   baseURL: 'http://localhost:3000/',
@@ -12,7 +12,11 @@ const service = axios.create({
 
 //http请求拦截器
 service.interceptors.request.use(config => {
-  
+  if (Cookies.get('userInfo')) {
+    config.headers = {
+      token: $.parseJSON(Cookies.get('userInfo')).token
+    }
+  }
   return config
 }, error => {
   return Promise.reject(error)
