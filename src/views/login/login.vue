@@ -33,7 +33,6 @@ export default {
     gotoLogin() {
       loginFunc(this.formLabelAlign.username, this.formLabelAlign.password)
         .then(Response => {
-          console.log();
           if (Response.data.state === 2) {
             let cookieInfo = {};
             cookieInfo.name = Response.data.name;
