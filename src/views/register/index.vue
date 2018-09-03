@@ -23,7 +23,7 @@
        </el-row>
        <el-row class="list-li">
          <el-col class="name-text" :span="6">密码</el-col>
-         <el-col :span="12"><el-input v-model="password" @focus="activeInput(2)" placeholder="请输入密码"></el-input></el-col> 
+         <el-col :span="12"><el-input type="password" v-model="password" @focus="activeInput(2)" placeholder="请输入密码"></el-input></el-col> 
          <el-col class="errorInfo" :span="6"><el-alert
           v-if="passwordErrorInfo"
           :title="passwordErrorInfo"
@@ -33,7 +33,7 @@
        </el-row>
        <el-row class="list-li">
          <el-col class="name-text" :span="6">确认密码</el-col>
-         <el-col :span="12"><el-input @focus="activeInput(3)" v-model="confirmPassword" placeholder="请确认密码"></el-input></el-col> 
+         <el-col :span="12"><el-input type="password" @focus="activeInput(3)" v-model="confirmPassword" placeholder="请确认密码"></el-input></el-col> 
          <el-col class="errorInfo" :span="6"><el-alert
           v-if="confirmErrorInfo"
           :title="confirmErrorInfo"
@@ -151,12 +151,18 @@ export default {
         dataFrom.Email = this.Email;
         dataFrom.phone = this.phone;
         register(dataFrom).then(Response => {
-          console.log(Response);
+          if (Response.data.scucces) {
+            this.$message({
+              message: Response.data.message,
+              type: "success"
+            });
+          }else{
+            this.$message({
+              message: Response.data.message,
+              type: "error"
+            });
+          }
         });
-        //  this.$message({
-        //    message: '注册成功',
-        //    type: 'success'
-        //  })
       } else {
         this.$message({
           message: "注册失败",
