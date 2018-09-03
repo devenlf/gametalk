@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import login from '@/views/login/login'
+import register from '@/views/register/index'
 import home from '@/views/home/home'
 import childRouter from './children-list'
+
 
 
 
@@ -25,6 +27,11 @@ const router = new Router({
       path: '/login',
       name: 'login',
       component: login
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: register
     }
   ]
 })

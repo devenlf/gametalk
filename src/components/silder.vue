@@ -37,7 +37,7 @@ export default {
 
 <style lang="scss">
 .silder-bar {
-  height: 100%;
+  height: 80vh;
   background: #545c64;
   ul {
     width: 100%;

@@ -33,7 +33,7 @@ export default {
 <style lang="scss">
 .list {
   width: 100%;
-  height: 800px;
+  height: 80vh;
 }
 .list-body {
   width: 30%;

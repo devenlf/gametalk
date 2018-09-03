@@ -1,6 +1,6 @@
 import server from '@/util/request';
 
-export function loginFunc(username,password) {
+export function loginFunc(username, password) {
   return server({
     url: '/users/login',
     method: 'post',
@@ -10,3 +10,14 @@ export function loginFunc(username,password) {
     data: 'username=' + encodeURIComponent(username) + '&password=' + encodeURIComponent(password) + ''
   })
 }
+
+
+
+export function register(data) {
+  return server({
+    url: '/users/register',
+    method: 'post',
+    data: data
+  })
+}
+

@@ -34,6 +34,6 @@ html {
   max-width: 1540px;
   margin: 0 auto;
   width: 80%;
-  height: 600px;
+  height: 80vh;
 }
 </style>

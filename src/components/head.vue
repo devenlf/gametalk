@@ -32,15 +32,19 @@ export default {
 <style lang="scss" scoped="" type="text/css">
 .banner {
   width: 100%;
+  min-width: 1180px;
   img {
+    width: 20vw;
+    height: 16vh;
+    min-height: 120px;
     min-width: 300px;
-    max-width: 400px;
     display: block;
     margin: 0 auto;
   }
   .line {
     width: 100%;
-    height: 40px;
+    height: 4vh;
+    min-height: 30px;
     background: #007acc;
   }
   .user-info {

@@ -11,18 +11,26 @@
   </el-form-item>
 </el-form>
 <el-row class="submit-line">
-  <el-button type="primary" class="submit-btn" @click="gotoLogin">登录</el-button>
+  <el-col :span="18">
+    <el-button v-if="isLogin" type="primary" class="submit-btn" @click="gotoLogin">登录</el-button>
+    <el-button v-else type="primary" plain class="submit-btn" @click="gotoRegister">注册</el-button>
+  </el-col>
+  <el-col :span="6">
+    <el-switch class="chooseLogin" v-model="isLogin" active-text="登录" inactive-text="注册">
+</el-switch>
+  </el-col> 
 </el-row>
   </div>
 </template>
 
 <script>
 import { loginFunc } from "@/api/user";
-import { Message } from 'element-ui';
+import { Message } from "element-ui";
 export default {
   name: "login",
   data() {
     return {
+      isLogin: true,
       formLabelAlign: {
         username: "",
         password: ""
@@ -39,13 +47,17 @@ export default {
             cookieInfo.token = Response.data.token;
             this.$cookie.set("userInfo", cookieInfo);
             this.$router.push({ path: "/" });
-          }else{
-            Message.error(Response.data.message)
+          } else {
+            Message.error(Response.data.message);
           }
         })
         .catch(error => {
           console.log(error);
         });
+    },
+    gotoRegister() {
+      console.log(this.$router);
+      this.$router.push({ path: "/register" });
     }
   }
 };
@@ -53,6 +65,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.chooseLogin {
+  margin-top: 10px;
+}
 .login-box {
   max-width: 600px;
   margin: 200px auto 0px;
@@ -67,6 +82,6 @@ export default {
 }
 .submit-btn {
   padding: 12px 100px;
-  margin: 0px 32%;
+  margin: 0px 42%;
 }
 </style>
