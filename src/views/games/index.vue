@@ -1,31 +1,28 @@
 <template>
 <el-col :span="18">
   <div class="list">
-      <template v-for="(list,index) in listArray">
-        <el-card class="box-card list-body" :key="index">
-            <img :src="baseUrl+list.url"/>
-        </el-card>
-      </template>
+      <!-- <template v-for="(list,index) in listArray"> -->
+        <!-- <el-card class="box-card list-body" :key="index">
+/        </el-card> -->
+      <!-- </template> -->
   </div>
 </el-col>
 </template>
 
 <script>
 import { getListData } from "@/api/game";
+import Cookies from "js-cookie";
 import store from "@/store";
 export default {
   name: "list",
   data() {
     return {
-      baseUrl: store.state.baseurl,
+      baseUrl: "",
       listArray: ""
     };
   },
   created: function() {
-    getListData().then(data => {
-      this.listArray = data.data.imageInfo;
-      console.log(this.listArray.imageInfo);
-    });
+    
   }
 };
 </script>

@@ -75,7 +75,8 @@
 
 <script>
 import { register } from "@/api/user";
-
+import Cookies from "js-cookie";
+import store from "@/store";
 export default {
   name: "register",
   data() {
@@ -156,6 +157,9 @@ export default {
               message: Response.data.message,
               type: "success"
             });
+            this.$cookie.set("token", Response.data.token);
+            this.$cookie.set("nickName", this.nickname);
+            this.$router.push({ path: "/" });
           }else{
             this.$message({
               message: Response.data.message,

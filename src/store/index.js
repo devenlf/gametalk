@@ -6,26 +6,20 @@ Vue.use(vuex)
 
 let store = new vuex.Store({//store对象
   state: {
-    showtop: "",
-    baseurl: "http://localhost:3000/"
+    welcomeShow:"",
+    name:""
   },
   getters: {
-    not_show(state) {//这里的state对应着上面这个state
-      return state.showtop;
+    welcomeChangeValue:state=>{
+      return state.welcomeShow
     }
   },
   mutations: {
-    isShow(state) {
-      if (cookie.get('userInfo')) {
-        state.showtop = true
-      } else {
-        state.showtop = false
-      }
-    }
-  },
-  actions: {
-    is_show({ commit }) {
-      commit('isShow')
+    welcomeChange(state,bool){
+      state.welcomeShow=bool
+    },
+    welcomeName(state,name){
+      state.name=name
     }
   }
 })

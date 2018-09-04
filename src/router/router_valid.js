@@ -9,17 +9,18 @@ const colation = [
 ]
 
 router.beforeEach((to, from, next) => {
-  let isLogin = cookie.get('userInfo')
+  let isLogin = cookie.get('token')
   if (colation.indexOf(to.path) !== -1) {
-    cookie.remove('userInfo')
+    store.commit('welcomeChange',false) 
     next();
   } else {
     if (!isLogin) {
       next('/login')
     } else {
+      store.commit('welcomeChange',true) 
+      store.commit('welcomeName',cookie.get('nickName')) 
       next()
     }
   }
-  store.dispatch('is_show');
 })
 

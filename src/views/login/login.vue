@@ -41,11 +41,10 @@ export default {
     gotoLogin() {
       loginFunc(this.formLabelAlign.username, this.formLabelAlign.password)
         .then(Response => {
-          if (Response.data.state === 2) {
-            let cookieInfo = {};
-            cookieInfo.name = Response.data.name;
-            cookieInfo.token = Response.data.token;
-            this.$cookie.set("userInfo", cookieInfo);
+          if (Response.data.state === 0) {
+            Message.success(Response.data.message);
+            this.$cookie.set("token", Response.data.token);
+            this.$cookie.set("nickName", Response.data.name);
             this.$router.push({ path: "/" });
           } else {
             Message.error(Response.data.message);

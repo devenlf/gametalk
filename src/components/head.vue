@@ -2,29 +2,38 @@
   <div class="banner">
       <img src="../../static/images/logo.jpg">
       <div class="line">
-        <div class="user-info" v-if="ifShowFooter">
-          欢迎来到游戏世界 <span class="name">{{username}}</span> <span class="signout">【退出】</span>
+        <div class="user-info" v-if="welcomeState">
+          欢迎来到游戏世界 <span class="name">{{welcomeName}}</span> <span @click="outLogin" class="signout">【退出】</span>
         </div>
       </div>
   </div>
 </template>
 
 <script>
-import store from '@/store'
+import store from "@/store";
+import Cookies from "js-cookie";
+
 export default {
   name: "HelloWorld",
   data() {
     return {
-      username: "Lifei",
-      showtop:store.state.showtop
-    };s
+    };
   },
-  computed:{
-    ifShowFooter(){
-        console.log(store.state.showtop)
-        return store.state.showtop
+  computed: {
+    welcomeState() {
+      return store.state.welcomeShow;
+    },
+    welcomeName() {
+      return store.state.name;
     }
-}
+  },
+  methods:{
+    outLogin(){
+      Cookies.remove('nickName');
+      Cookies.remove('token');
+      this.$router.push({ path: "/login" });
+    }
+  }
 };
 </script>
 
@@ -57,5 +66,8 @@ export default {
       color: #ffffff;
     }
   }
+}
+.signout{
+  cursor: pointer;
 }
 </style>
