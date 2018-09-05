@@ -51,22 +51,32 @@ export default {
   },
   methods: {
     onSubmit() {
-      uploadFabu(this.form).then((Response) => {
-        if(Response.data.status===1){
-          Message.success(Response.data.message)
-          this.clearAll()
+      let ispass = true;
+      for (var obj in this.form) {
+        if (this.form[obj] === "") {
+          ispass = false;
+        }
+      }
+      if (!ispass) {
+        Message.error("信息填写不完善");
+        return
+      }
+      uploadFabu(this.form).then(Response => {
+        if (Response.data.status === 1) {
+          Message.success(Response.data.message);
+          this.clearAll();
         }
       });
     },
     uploadSuccess(response, file, fileList) {
       this.form.logoname = response.filename;
     },
-    clearAll(){
-      this.fileList2=[];
-      this.form.name="",
-      this.form.describe="",
-      this.form.link="",
-      this.form.logoname=""
+    clearAll() {
+      this.fileList2 = [];
+      (this.form.name = ""),
+        (this.form.describe = ""),
+        (this.form.link = ""),
+        (this.form.logoname = "");
     }
   }
 };
