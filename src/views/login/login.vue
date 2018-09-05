@@ -38,14 +38,28 @@ export default {
     };
   },
   methods: {
+    levelDivision(data) {
+      Message.success(data.message);
+      this.$cookie.set("token", data.token);
+      this.$cookie.set("nickName", data.name);
+      this.$cookie.set("level", data.level);
+    },
     gotoLogin() {
       loginFunc(this.formLabelAlign.username, this.formLabelAlign.password)
         .then(Response => {
           if (Response.data.state === 0) {
-            Message.success(Response.data.message);
-            this.$cookie.set("token", Response.data.token);
-            this.$cookie.set("nickName", Response.data.name);
-            this.$router.push({ path: "/" });
+            //普通玩家
+            switch (Response.data.level) {
+              case 0:
+                this.levelDivision(Response.data)
+                this.$router.push({ path: "/" });
+                break;
+              case 1:
+                this.levelDivision(Response.data)
+                this.$router.push({ path: "/admin" });
+            }
+
+            //管理员
           } else {
             Message.error(Response.data.message);
           }

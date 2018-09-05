@@ -159,6 +159,7 @@ export default {
             });
             this.$cookie.set("token", Response.data.token);
             this.$cookie.set("nickName", this.nickname);
+            this.$cookie.set("level", 0);
             this.$router.push({ path: "/" });
           }else{
             this.$message({

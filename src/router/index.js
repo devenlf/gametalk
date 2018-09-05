@@ -4,6 +4,8 @@ import login from '@/views/login/login'
 import register from '@/views/register/index'
 import home from '@/views/home/home'
 import childRouter from './children-list'
+import childrenAdmin from './children-admin'
+import admin from '@/views/admin/index'
 
 
 
@@ -27,6 +29,12 @@ const router = new Router({
       path: '/login',
       name: 'login',
       component: login
+    },
+    {
+      path: '/admin',
+      redirect: '/admin/gamefabu',
+      component: admin,
+      children: childrenAdmin
     },
     {
       path: '/register',

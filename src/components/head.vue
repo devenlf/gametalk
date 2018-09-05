@@ -30,6 +30,7 @@ export default {
   methods:{
     outLogin(){
       Cookies.remove('nickName');
+      Cookies.remove('level');   
       Cookies.remove('token');
       this.$router.push({ path: "/login" });
     }
