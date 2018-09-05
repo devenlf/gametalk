@@ -12,9 +12,9 @@ const service = axios.create({
 
 //http请求拦截器
 service.interceptors.request.use(config => {
-  if (Cookies.get('userInfo')) {
+  if (Cookies.get('token')) {
     config.headers = {
-      token: $.parseJSON(Cookies.get('userInfo')).token
+      token: Cookies.get('token')
     }
   }
   return config

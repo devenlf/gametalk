@@ -22,7 +22,7 @@ export default {
     };
   },
   created: function() {
-    
+    getListData()
   }
 };
 </script>
