@@ -1,8 +1,9 @@
 import server from '@/util/request';
 
-export function getListData() {
+export function getListData(page, row) {
   return server({
     url: '/game/list',
-    method: 'post'
+    method: 'post',
+    data: { page, row }
   })
 }

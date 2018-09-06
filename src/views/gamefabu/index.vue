@@ -15,6 +15,7 @@
           <el-upload
             class="upload-demo"
             action="http://localhost:3000/admin/upload"
+            :headers="myHeaders"
             :limit="1"
             :on-success="uploadSuccess"
             :file-list="fileList2"
@@ -36,6 +37,8 @@
 <script>
 import { Message } from "element-ui";
 import { uploadFabu } from "@/api/admin";
+import Cookies from "js-cookie";
+
 export default {
   name: "listAdmin",
   data() {
@@ -45,6 +48,9 @@ export default {
         describe: "",
         link: "",
         logoname: ""
+      },
+      myHeaders: {
+        token: Cookies.get("token")
       },
       fileList2: []
     };
@@ -59,7 +65,7 @@ export default {
       }
       if (!ispass) {
         Message.error("信息填写不完善");
-        return
+        return;
       }
       uploadFabu(this.form).then(Response => {
         if (Response.data.status === 1) {

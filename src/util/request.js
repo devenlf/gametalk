@@ -4,6 +4,7 @@
 // 引入axios以及element ui中的loading和message组件
 import axios from 'axios'
 import Cookies from "js-cookie";
+import { Message } from "element-ui";
 // 创建axios实例
 const service = axios.create({
   baseURL: 'http://localhost:3000/',
@@ -27,6 +28,11 @@ service.interceptors.request.use(config => {
 service.interceptors.response.use(data => {// 响应成功关闭loading
   return data
 }, error => {
+  Message.error(error.response.data)
+  Cookies.remove('nickName');
+  Cookies.remove('level');   
+  Cookies.remove('token');
+  this.$router.push({ path: "/login" });
   return Promise.reject(error)
 })
 
