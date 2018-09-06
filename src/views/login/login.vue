@@ -47,7 +47,7 @@ export default {
     gotoLogin() {
       loginFunc(this.formLabelAlign.username, this.formLabelAlign.password)
         .then(Response => {
-          if (Response.data.state === 0) {
+          if (Response.data.state !== 0) {
             //普通玩家
             switch (Response.data.level) {
               case 0:
