@@ -14,7 +14,7 @@
       <el-form-item label="LOGO上传">
           <el-upload
             class="upload-demo"
-            action="http://localhost:3000/admin/upload"
+            :action="activeUrl"
             :headers="myHeaders"
             :limit="1"
             :on-success="uploadSuccess"
@@ -47,8 +47,9 @@ export default {
         name: "",
         describe: "",
         link: "",
-        logoname: ""
+        logoname: "",
       },
+      activeUrl: process.env.BASE_URL + "admin/upload",
       myHeaders: {
         token: Cookies.get("token")
       },

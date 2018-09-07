@@ -7,7 +7,7 @@ import Cookies from "js-cookie";
 import { Message } from "element-ui";
 // 创建axios实例
 const service = axios.create({
-  baseURL: 'http://localhost:3000/',
+  baseURL: process.env.BASE_URL,
   timeout: 50000 // 请求超时时间
 })
 

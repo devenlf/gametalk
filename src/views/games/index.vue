@@ -6,7 +6,7 @@
         <el-card class="box-card list-body" :key="index">
           <img :src="list.logoLink" :alt="list.gameDes">
           <el-tooltip class="gameName" effect="dark" :content="list.gameDes" placement="top-start">
-            <el-button>{{list.gameName}}</el-button>
+            <el-button @click="gotoTiezi(list.gameId,list.gameName)">{{list.gameName}}</el-button>
           </el-tooltip>
           <el-row>
             <el-col class="bottom-list" :span="24">
@@ -39,6 +39,11 @@ export default {
     getListData(page, row).then(respose => {
       this.currentPageList = respose.data.gameList;
     });
+  },
+  methods: {
+    gotoTiezi(id, name) {
+      this.$router.push({ path: "/home/tiezi", query: { id, name } });
+    }
   }
 };
 </script>
@@ -50,7 +55,7 @@ export default {
   height: 80vh;
   padding-left: 3vw;
 }
-.listBox{
+.listBox {
   overflow: auto;
 }
 .list-son {
@@ -61,13 +66,14 @@ export default {
   }
 }
 .list-body {
-  width: 30%;
+  width: 29%;
   height: 240px;
   img {
     width: 98%;
-    height: 130px;
+    height: 120px;
     display: block;
     margin: auto;
+    display: block
   }
   float: left;
   margin: 2% 1%;

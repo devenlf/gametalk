@@ -28,5 +28,6 @@ export default {
 .home {
   width: 100%;
   height: 80vh;
+  background: #efefef
 }
 </style>

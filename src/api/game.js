@@ -7,3 +7,12 @@ export function getListData(page, row) {
     data: { page, row }
   })
 }
+
+//发布帖子
+export function fabuTiezi(data) {
+  return server({
+    url: '/game/fabutiezi',
+    method: 'post',
+    data: data
+  })
+} 

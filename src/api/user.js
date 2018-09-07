@@ -1,5 +1,6 @@
 import server from '@/util/request';
 
+//登录
 export function loginFunc(username, password) {
   return server({
     url: '/users/login',
@@ -12,7 +13,7 @@ export function loginFunc(username, password) {
 }
 
 
-
+//注册
 export function register(data) {
   return server({
     url: '/users/register',
